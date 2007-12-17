@@ -26,7 +26,6 @@ Source1: 	gnus-emacs.el
 URL: 		http://www.gnus.org/
 License: 	GPL
 Group: 		Networking/News
-BuildRoot: 	%{_tmppath}/%{name}-buildroot
 BuildArchitectures: noarch
 BuildRequires: emacs-bin
 
