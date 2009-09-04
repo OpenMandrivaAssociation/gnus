@@ -1,7 +1,7 @@
 %define cvs    0
 %define sname	ngnus-0.3
 
-%define rel 1
+%define rel 2
 %define release %mkrel %{rel}
 
 %define infodir %_infodir/packages/%{name}
