@@ -1,7 +1,7 @@
 %define cvs    0
 %define sname	ngnus-0.3
 
-%define rel 2
+%define rel 3
 %define release %mkrel %{rel}
 
 %define infodir %_infodir/packages/%{name}
@@ -24,7 +24,7 @@ Source0:	http://www.gnus.com/dist/%name-%version.tar.bz2
 Source1: 	gnus-emacs.el
 #Source2: 	gnus-xemacs.el
 URL: 		http://www.gnus.org/
-License: 	GPL
+License: 	GPLv2+
 Group: 		Networking/News
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
 BuildArchitectures: noarch
