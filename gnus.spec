@@ -1,12 +1,7 @@
 %define cvs    0
 %define sname	ngnus-0.3
 
-%define rel 3
-%define release %mkrel %{rel}
-
 %define infodir %_infodir/packages/%{name}
-%define _install_info()	%{__install_info} %{infodir}/%{1}%{_extension} --dir=%{infodir}/dir\;
-%define _remove_install_info() if [ "$1" = "0" ]; then %{__install_info} %{infodir}/%{1}%{_extension} --dir=%{infodir}/dir --remove ; fi %{nil}
 
 %{expand:%%define emacs_version %(rpm -q emacs|sed 's/emacs-\([0-9].*\)-.*$/\1/')}
 %{expand:%%define xemacs_version %(rpm -q xemacs|sed 's/xemacs-\([0-9].*\)-.*$/\1/')}
@@ -15,7 +10,7 @@ Summary:	Gnus Newsreader for Emacs
 Name:	gnus
 Epoch:	1
 Version:	5.10.8
-Release:	%release
+Release:	4
 %if %cvs
 Source0:	http://www.gnus.com/dist/%sname.tar.bz2
 %else
@@ -26,8 +21,7 @@ Source1: 	gnus-emacs.el
 URL: 		http://www.gnus.org/
 License: 	GPLv2+
 Group: 		Networking/News
-BuildRoot: 	%{_tmppath}/%{name}-buildroot
-BuildArchitectures: noarch
+BuildArch: noarch
 BuildRequires: emacs-bin
 
 %description
@@ -91,8 +85,6 @@ for i in emacs ; do
 done
 
 %install
-rm -rf $RPM_BUILD_ROOT
-
 for i in emacs ; do
   make -C $i-build install infodir=%buildroot%{infodir} lispdir=%buildroot%{_datadir}/$i/site-lisp/%{name} EMACS=/usr/bin/$i
 done
@@ -101,22 +93,6 @@ install -d %buildroot%{_sysconfdir}/emacs/site-start.d
 cat << EOF > %buildroot%{_sysconfdir}/emacs/site-start.d/%{name}-emacs.el
 %{expand:%(%__cat %{SOURCE1})}
 EOF
-
-
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-%post doc 
-%_install_info %{name}
-%_install_info message
-%_install_info emacs-mime
-
-%preun doc
-%_remove_install_info %{name}
-
-%_remove_install_info message
-
-%_remove_install_info emacs-mime
 
 %files doc
 %defattr(-,root,root)
