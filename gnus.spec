@@ -10,7 +10,7 @@ Summary:	Gnus Newsreader for Emacs
 Name:	gnus
 Epoch:	1
 Version:	5.10.8
-Release:	4
+Release:	5
 %if %cvs
 Source0:	http://www.gnus.com/dist/%sname.tar.bz2
 %else
