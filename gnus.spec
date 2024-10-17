@@ -18,7 +18,7 @@ Source0:	http://www.gnus.com/dist/%name-%version.tar.bz2
 %endif
 Source1: 	gnus-emacs.el
 #Source2: 	gnus-xemacs.el
-URL: 		http://www.gnus.org/
+URL: 		https://www.gnus.org/
 License: 	GPLv2+
 Group: 		Networking/News
 BuildArch: noarch
